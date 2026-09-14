@@ -3,14 +3,32 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "src/electron/main.js",
   "scripts": {
-    "dev": "vite",
+    "dev:react": "vite",
+    "dev:electron": "cross-env NODE_ENV=development electron .",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.m-luat.schmucky",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "src/electron",
+      "dist-react"
+    ],
+    "icon": "src/app/assets/react.svg",
+    "win": {
+      "target": "portable"
+    }
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "dotenv": "^17.4.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3"
@@ -23,7 +41,9 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
+    "cross-env": "^10.1.0",
     "electron": "^44.3.0",
+    "electron-builder": "^26.15.3",
     "eslint": "^10.10.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",

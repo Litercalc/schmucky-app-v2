@@ -2,7 +2,7 @@
 
 export default function WavyText({ text }) {
   return (
-    <h1 className="font-jersey text-[64px] text-white flex -mt-5" style={{ WebkitTextStroke: '2px #94c9cc' }}>
+    <h1 className="[-webkit-app-region:drag] font-jersey text-[48px] text-white flex -mt-5" style={{ WebkitTextStroke: '2px #94c9cc' }}>
       {text.split('').map((char, i) => (
         <h1
           key={i}
