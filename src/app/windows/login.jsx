@@ -4,7 +4,7 @@ import duckFamWalking from "../../assets/duck-family-walking.gif"
 
 export default function login(){
     return (
-        <div className="w-60 h-80 flex flex-col items-center bg-linear-to-br from-[#294d4d]/90 via-[#2e6161] to-[#294d4d]/90 overflow-hidden border-4 border-gray-900 rounded-xl [-webkit-app-region:drag]">
+        <div className=" origin-bottom-right animate-expand w-60 h-80 flex flex-col items-center bg-linear-to-br from-[#294d4d]/90 via-[#2e6161] to-[#294d4d]/90 overflow-hidden border-4 border-gray-900 rounded-xl [-webkit-app-region:drag]">
             <Header title="Login"/>
             <hr className="border-white bg-white border-2 w-40"/>
             <table className="border-separate border-spacing-y-4">

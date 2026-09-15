@@ -4,6 +4,8 @@
   --font-jersey: 'Jersey 15', sans-serif;
   --animate-wave: wave 2s ease-in-out infinite;
   --animate-walk: walk 15s linear infinite;
+  --animate-expand: expand 0.15s ease-out;
+  --animate-close-window: close-window 0.15s ease-out forwards;
 }
 
 @keyframes wave {
@@ -14,4 +16,14 @@
 @keyframes walk {
   0% {transform: translateX(0);}
   100% {transform: translateX(500px);}
+}
+
+@keyframes expand {
+  0% {transform: scale(0)}
+  100% {transform: scale(1);}
+}
+
+@keyframes close-window {
+  0% {transform: scale(1)}
+  100% {transform: scale(0);}
 }

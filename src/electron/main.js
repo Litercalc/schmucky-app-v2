@@ -9,8 +9,8 @@ function startApp() {
     const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize
     const { x: workAreaX, y: workAreaY } = primaryDisplay.workArea
 
-    const winWidth = 300
-    const winHeight = 190
+    const winWidth = 210 //110
+    const winHeight = 320 //190
 
     const mainWindow = new BrowserWindow({
         width: winWidth,
@@ -21,6 +21,7 @@ function startApp() {
         frame: false,
         resizable: false,
         alwaysOnTop: true,
+        skipTaskbar: true,
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: false,

@@ -10,7 +10,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
   },
   "build": {
     "appId": "com.m-luat.schmucky",
@@ -21,9 +23,14 @@
       "src/electron",
       "dist-react"
     ],
-    "icon": "src/app/assets/react.svg",
     "win": {
-      "target": "portable"
+      "target": "portable",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.entertainment",
+      "icon": "build/icon.icns"
     }
   },
   "dependencies": {

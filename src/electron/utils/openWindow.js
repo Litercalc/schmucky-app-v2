@@ -12,12 +12,13 @@ export default function openWindow(windowName) {
         const mainWindow = new BrowserWindow({
             width: winWidth,
             height: winHeight,
-            x: workAreaX + screenWidth - winWidth,
-            y: workAreaY + screenHeight - winHeight,
+            x: workAreaX + screenWidth - winWidth - 65,
+            y: workAreaY + screenHeight - winHeight - 50,
             transparent: true,
             frame: false,
             resizable: false,
             alwaysOnTop: true,
+            skipTaskbar: true,
             webPreferences: {
                 contextIsolation: true,
                 nodeIntegration: false,
