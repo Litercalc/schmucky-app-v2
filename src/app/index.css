@@ -6,6 +6,8 @@
   --animate-walk: walk 15s linear infinite;
   --animate-expand: expand 0.15s ease-out;
   --animate-close-window: close-window 0.15s ease-out forwards;
+  --animate-fade-in: fade-in 0.1s ease-out;
+  --animate-fade-out: fade-out 0.1s ease-out forwards;
 }
 
 @keyframes wave {
@@ -26,4 +28,14 @@
 @keyframes close-window {
   0% {transform: scale(1)}
   100% {transform: scale(0);}
+}
+
+@keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fade-out {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
 }
