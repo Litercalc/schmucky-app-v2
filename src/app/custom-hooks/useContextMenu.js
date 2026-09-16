@@ -9,6 +9,8 @@ export default function useContextMenu(refs) {
         const duck = interactables[0]
         const menu = interactables[1]
 
+        console.log(refs)
+
         const openContextMenu = (e) => {
             e.preventDefault()
             menu.classList.add('animate-fade-in')

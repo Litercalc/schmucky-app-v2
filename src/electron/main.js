@@ -17,9 +17,9 @@ function startApp() {
         height: winHeight,
         x: workAreaX + screenWidth - winWidth,
         y: workAreaY + screenHeight - winHeight,
-        transparent: true,
-        frame: false,
-        resizable: false,
+        transparent: false,
+        frame: true,
+        resizable: true,
         alwaysOnTop: true,
         skipTaskbar: true,
         webPreferences: {

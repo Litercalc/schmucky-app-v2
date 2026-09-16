@@ -1,11 +1,14 @@
 import { useEffect } from "react"
 
-export default function useInteractables(refs) {
+export default function useInteractables(refs) { 
 
     useEffect(() => {
         const interactables = refs.map(e => e.current)
         const onEnter = () => window.electron.isOnInteractable(true)
-        const onExit = () => window.electron.isOnInteractable(false)
+        const onExit = (e) => {
+
+            window.electron.isOnInteractable(false)
+        }
 
         interactables.forEach(element => {
             element.addEventListener("mouseenter", onEnter)
@@ -20,5 +23,5 @@ export default function useInteractables(refs) {
                 element.removeEventListener("mouseleave", onExit)
             })
         }
-    }, refs)
+    }, [])
 }
