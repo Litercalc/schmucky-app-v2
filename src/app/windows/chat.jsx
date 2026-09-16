@@ -3,7 +3,7 @@ import SubmitButton from "../reusable-components/submit-button.jsx"
 
 export default function Chat(){
     return (
-        <div className="origin-bottom-right animate-expand [-webkit-app-region:drag] w-60 h-55 flex flex-col items-center bg-linear-to-br from-[#294d4d]/90 via-[#2e6161] to-[#294d4d]/90 overflow-hidden border-4 border-gray-900 rounded-xl">
+        <div className="origin-bottom-right animate-expand [-webkit-app-region:drag] w-60 h-55 flex flex-col items-center bg-linear-to-br from-[#294d4d]/90 via-[#2e6161] to-[#294d4d]/90 overflow-hidden border-4 border-gray-900 rounded-xl mt-25">
             
             <Header title="Boop"/>
 

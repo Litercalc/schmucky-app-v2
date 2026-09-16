@@ -12,8 +12,8 @@ export default function openWindow(windowName) {
         const mainWindow = new BrowserWindow({
             width: winWidth,
             height: winHeight,
-            x: workAreaX + screenWidth - winWidth - 65,
-            y: workAreaY + screenHeight - winHeight - 50,
+            x: workAreaX + screenWidth - winWidth - 85,
+            y: workAreaY + screenHeight - winHeight - 80,
             transparent: true,
             frame: false,
             resizable: false,

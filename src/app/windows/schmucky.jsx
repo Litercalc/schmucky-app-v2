@@ -1,51 +1,18 @@
 import duckIdle from "../../assets/duck-idle.gif"
-import { useRef, useEffect } from "react"
+import { useRef } from "react"
 import ContextMenu from "../misc-components/context-menu.jsx"
+
+import useInteractables from "../custom-hooks/useInteractables.js"
+import useContextMenu from "../custom-hooks/useContextMenu.js"
+
+
 
 export default function Schmucky() {
     const duckArea = useRef(null)
     const contextMenu = useRef(null)
 
-    useEffect(() => {
-         const duck = duckArea.current
-         const menu = contextMenu.current
-         const interactables = [duck, menu]
-
-
-        duck.addEventListener("contextmenu", (e) => {
-            e.preventDefault()
-            menu.classList.add('animate-fade-in')
-            menu.classList.remove('animate-fade-out')
-            menu.style.display = "block"
-        })
-
-        interactables.forEach(element => {
-            element.addEventListener("mouseenter", () => {
-                window.electron.isOnInteractable(true)
-            })
-            
-            element.addEventListener("mouseleave", () => {
-                console.log("mouse left")
-                window.electron.isOnInteractable(false)
-            })
-        })
-
-        document.addEventListener("click", () => {
-            menu.classList.remove('animate-fade-in')
-            menu.classList.add('animate-fade-out')
-            setTimeout(() => {
-                menu.style.display = "none"
-            }, 150)
-
-        })
-
-        menu.addEventListener("click", () => {
-
-            window.electron.isOnInteractable(false)
-            
-        })
-
-    }, [])
+    useInteractables([duckArea, contextMenu])
+    useContextMenu([duckArea, contextMenu])
 
     return (
         <div className="flex relative select-none" draggable="false">
