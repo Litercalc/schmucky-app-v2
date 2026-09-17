@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react"
-import schmuckyStateMachine from "../utils/schmucky-state-machine"
+import { useStateStore } from "../utils/schmucky-state-machine"
+
 
 export default function usePetSchmucky(duckRef) { 
 
-    const isMouseDown = useRef(false)
+    const setCurrentState = useStateStore(state => state.setCurrentState)
 
-    console.log(duckRef)
+    const isMouseDown = useRef(false)
 
     useEffect(() => {
 
@@ -14,7 +15,7 @@ export default function usePetSchmucky(duckRef) {
         const onMouseDown = () => isMouseDown.current = true
         const onMouseUp = () => isMouseDown.current = false
         const onMouseMove = () => {
-            if (isMouseDown.current === true) schmuckyStateMachine("PET")
+            if (isMouseDown.current === true) setCurrentState("PET")
         }
 
         const onMouseLeave = () => isMouseDown.current = false
@@ -32,5 +33,5 @@ export default function usePetSchmucky(duckRef) {
             duck.removeEventListener("mouseleave", onMouseLeave)
         }
         
-    }, duckRef)
+    }, [duckRef])
 }

@@ -1,8 +1,10 @@
 import { useEffect } from "react"
 
-import schmuckyStateMachine from "../utils/schmucky-state-machine.js"
+import { useStateStore } from "../utils/schmucky-state-machine"
 
 export default function useContextMenu(refs) {
+
+    const setCurrentState = useStateStore(state => state.setCurrentState)
 
     useEffect(() => {
         const interactables = refs.map(e => e.current)
@@ -16,7 +18,7 @@ export default function useContextMenu(refs) {
             menu.classList.add('animate-fade-in')
             menu.classList.remove('animate-fade-out')
             menu.style.display = "block"
-            schmuckyStateMachine("SEARCHING")
+            setCurrentState("SEARCHING")
         }
 
         const closeContextMenu = (e) => {
@@ -25,7 +27,7 @@ export default function useContextMenu(refs) {
             setTimeout(() => {
                 menu.style.display = "none"
             }, 150)
-            schmuckyStateMachine("IDLE")
+            setCurrentState("IDLE")
         }
 
         duck.addEventListener("contextmenu", openContextMenu)

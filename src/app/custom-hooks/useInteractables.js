@@ -23,5 +23,5 @@ export default function useInteractables(refs) {
                 element.removeEventListener("mouseleave", onExit)
             })
         }
-    }, [])
+    }, refs)
 }

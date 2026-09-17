@@ -3,34 +3,37 @@ import duckIdle from "../../assets/schmucky-states/duck-IDLE.gif"
 import duckPet from "../../assets/schmucky-states/duck-PET.gif"
 import duckSearching from "../../assets/schmucky-states/duck-SEARCHING.gif"
 
+import { create } from "zustand"
 
-let currentState = 'IDLE'
+export const useStateStore = create((set, get) => ({
+    currentState: 'IDLE',
 
-const states = {
-    'IDLE' : [
-        'PET',
-        'SEARCHING'
-    ],
-    'PET' : [
-        'IDLE',
-        'SEARCHING'
-    ],
-    'SEARCHING': [
-        'IDLE',
-        'PET'
-    ]
-}
+    setCurrentState: (newState) => {
+        const states = {
+            'IDLE' : [
+                'PET',
+                'SEARCHING'
+            ],
+            'PET' : [
+                'IDLE',
+                'SEARCHING'
+            ],
+            'SEARCHING': [
+                'IDLE',
+                'PET'
+            ]
+        }
+
+        if (states[get().currentState].includes(newState)) {
+            set({currentState: newState})
+            console.log(get().currentState)
+        }
+    }
+}))
+
 
 export const animationStates = {
     'IDLE': duckIdle,
     'PET': duckPet,
     'SEARCHING': duckSearching
-}
-
-export default function schmuckyStateMachine(nextState) {
-
-    if (states[currentState].includes(nextState)) {
-        currentState = nextState
-        console.log(currentState)
-    }
 }
