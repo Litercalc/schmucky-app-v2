@@ -1,4 +1,4 @@
-import { ipcMain, app, BrowserWindow, Menu } from "electron";
+import { ipcMain,  BrowserWindow } from "electron";
 import openWindow from "./utils/openWindow.js";
 
 export function ipcMainApp() {

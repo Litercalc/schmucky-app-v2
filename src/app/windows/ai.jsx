@@ -7,13 +7,14 @@ export default function SchmuckyAI(){
             
             <Header title="Ducky AI"/>
 
-            <div className="border-2 border-white w-55 h-44  bg-black">
+            <div className="border-2 border-white w-55 h-45  bg-black">
                 
 
             </div>
 
+            <hr className="border-white bg-white border w-40 mt-1"/>
 
-            <div className="flex gap-2 mt-3 items-center justify-center">
+            <div className="flex gap-2 mt-1 items-center justify-center">
                 <input type="text" id="prompt" className="[-webkit-app-region:no-drag] bg-white font-jersey text-l indent-1 border-b-[#94c9cc] border-b-6 " size={18} placeholder="Enter Prompt..."/>
                 <SubmitButton label="⏎"/>
                 <SubmitButton label="⎘"/>
