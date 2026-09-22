@@ -1,18 +1,22 @@
 import {app, BrowserWindow, screen} from "electron"
+import Store from "electron-store"
 import path from "path"
 import isDev from "./utils/isDev.js"
 
-import { ipcMainApp } from "./ipcMain.js"
+import { ipcMainApp, ipcMainAccount } from "./ipc/index.js"
+
+export let main
+export let store
 
 function startApp() {
     const primaryDisplay = screen.getPrimaryDisplay()
     const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize
     const { x: workAreaX, y: workAreaY } = primaryDisplay.workArea
 
-    const winWidth = 210 //110
-    const winHeight = 320 //190
+    const winWidth = 250 //110
+    const winHeight = 325 //190
 
-    const mainWindow = new BrowserWindow({
+    main = new BrowserWindow({
         width: winWidth,
         height: winHeight,
         x: workAreaX + screenWidth - winWidth,
@@ -30,14 +34,16 @@ function startApp() {
         }
     })
     if (isDev()) {
-        mainWindow.loadURL("http://localhost:5123")
+        main.loadURL("http://localhost:5123")
     } else 
-    {mainWindow.loadFile(path.join(app.getAppPath(), '/dist-react/index.html'))}
+    {main.loadFile(path.join(app.getAppPath(), '/dist-react/index.html'))}
 
 
 }
 
 app.whenReady().then(() => {
+    store = new Store()
     ipcMainApp()
+    ipcMainAccount()
     startApp()
 })

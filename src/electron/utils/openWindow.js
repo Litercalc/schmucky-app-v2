@@ -20,7 +20,7 @@ export default function openWindow(windowName) {
         width: winWidth,
         height: winHeight,
         x: workAreaX + screenWidth - winWidth - 85,
-        y: workAreaY + screenHeight - winHeight - 80,
+        y: workAreaY + screenHeight - winHeight - 90,
         transparent: true,
         frame: false,
         resizable: false,

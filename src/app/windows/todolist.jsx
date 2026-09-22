@@ -2,6 +2,7 @@ import Header from "../reusable-components/header.jsx"
 import SubmitButton from "../reusable-components/submit-button.jsx"
 
 import Tab from "../reusable-components/tabs.jsx"
+import ToDoArea from "../window-components/todo-area.jsx"
 import { useTabStore } from "../reusable-components/tabs.jsx"
 
 export default function ToDoList(){
@@ -20,10 +21,8 @@ export default function ToDoList(){
                 {tabs}
             </div>
 
-            <div className="border-2 border-white w-55 h-41">
-                
-
-            </div>
+            <ToDoArea/>
+        
             <hr className="border-white bg-white border w-40 mt-1"/>
 
             <div className="flex gap-2 mt-1 items-center justify-center">

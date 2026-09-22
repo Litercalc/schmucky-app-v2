@@ -9,8 +9,9 @@ export const useTabStore = create((set, get) => ({
     },
 
     setTabs: (label, tabGroup) => {
-        set(state => ({todoTabs: Object.fromEntries(Object.entries(state[tabGroup]).map(([key]) => [key, label === key])) }))
-    }
+        set(state => ({[tabGroup]: Object.fromEntries(Object.entries(state[tabGroup]).map(([key]) => [key, label === key])) }))
+    },
+
 }))
 
 export default function tab({label, state, tabGroup}) {

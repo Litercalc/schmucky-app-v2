@@ -1,10 +1,12 @@
 import { useEffect } from "react"
 
 import { useStateStore } from "../utils/schmucky-state-machine"
+import { useTokenStore } from "../misc-components/context-menu"
 
 export default function useContextMenu(refs) {
 
     const setCurrentState = useStateStore(state => state.setCurrentState)
+    const setHasToken = useTokenStore(state => state.setHasToken)
 
     useEffect(() => {
         const interactables = refs.map(e => e.current)
@@ -15,6 +17,7 @@ export default function useContextMenu(refs) {
 
         const openContextMenu = (e) => {
             e.preventDefault()
+            setHasToken()
             menu.classList.add('animate-fade-in')
             menu.classList.remove('animate-fade-out')
             menu.style.display = "block"
