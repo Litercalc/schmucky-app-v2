@@ -1,7 +1,8 @@
 import { ipcMain,  BrowserWindow } from "electron";
 import openWindow from "../utils/openWindow.js";
 
-import { store, main } from "../main.js";
+import { main } from "../main.js";
+import { store } from "../utils/store.js";
 
 export default function ipcMainApp() {
 
@@ -17,7 +18,7 @@ export default function ipcMainApp() {
             "Login": "login",
             "To-Do List": "todolist",
             "Ducky AI": "ai",
-            "Boop Someone": "chat",
+            "Boop-a-Schmuck": "chat",
             "Set Alarm": "ai",
             "Logout": "ai"
         }

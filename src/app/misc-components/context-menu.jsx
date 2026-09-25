@@ -15,16 +15,18 @@ export default forwardRef (function ContextMenu(props, ref) {
     const hasToken = useTokenStore(state => state.hasToken)
 
     return (
-        <div ref={ref} className="fixed ml-35 hidden ">
+        <div ref={ref} className="fixed ml-37 mt-15 hidden ">
             <div className={`border-2 border-b-1 border-[#944242] ${hasToken && "pointer-events-none opacity-75"}`}>
                 <ContextOption label="Register"/>
                 <ContextOption label="Login"/>
             </div>
-            <div className={`border-2 border-t-1 border-[#944242] ${!hasToken && "pointer-events-none opacity-75"}`}>
+            <div className={`border-2 border-t-1 border-b-1 border-[#944242] ${!hasToken && "pointer-events-none opacity-75"}`}>
                 <ContextOption label="To-Do List"/>
                 <ContextOption label="Ducky AI"/>
-                <ContextOption label="Boop Someone"/>
+                <ContextOption label="Boop-a-Schmuck"/>
                 <ContextOption label="Set Alarm"/>
+            </div>
+            <div className={`border-2 border-t-1 border-[#944242] ${!hasToken && "pointer-events-none opacity-75"}`}>
                 <ContextOption label="Logout"/>
             </div>
         </div>

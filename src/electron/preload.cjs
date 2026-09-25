@@ -14,5 +14,12 @@ electron.contextBridge.exposeInMainWorld("electron", {
 
     register: (username, password) => electron.ipcRenderer.invoke("app:register", username, password),
     login: (username, password) => electron.ipcRenderer.invoke("app:login", username, password),
-    logout: () => electron.ipcRenderer.send("app:logout")
+    logout: () => electron.ipcRenderer.send("app:logout"),
+
+    addTask: (task) => electron.ipcRenderer.invoke("todolist:add", task),
+    getTasks: () => electron.ipcRenderer.invoke("todolist:get"),
+    changeTaskStatus: (id, newStatus) => electron.ipcRenderer.invoke("todolist:changeTaskStatus", id, newStatus),
+    deleteTask: (id) => electron.ipcRenderer.invoke("todolist:delete", id),
+
+    sendMessage: (recipient, message) => electron.ipcRenderer.send("chat:send-message", recipient, message)
 })

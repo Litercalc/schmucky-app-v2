@@ -9,7 +9,7 @@ export default function MessageBubble() {
 
     return (
         (message && <div className="absolute mr-25 mt-62 font-jersey text-m right-0 top-0">
-            <div className="z-1relative w-auto max-w-38 max-h-15 h-auto leading-none px-2 bg-white border-3 border-black py-1 wrap-break-word">
+            <div className="z-1relative w-auto max-w-40 max-h-15 h-auto leading-none px-2 bg-white border-3 border-black py-1 wrap-break-word">
                 {message}
                 
                 {/* border-colored triangle, slightly bigger, sits behind */}

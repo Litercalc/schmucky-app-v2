@@ -1,12 +1,13 @@
 import {app, BrowserWindow, screen} from "electron"
-import Store from "electron-store"
+import { store } from "./utils/store.js"
 import path from "path"
 import isDev from "./utils/isDev.js"
 
-import { ipcMainApp, ipcMainAccount } from "./ipc/index.js"
+import { ipcMainApp, ipcMainAccount, ipcMainToDo, ipcMainChat } from "./ipc/index.js"
+import { socket } from "./utils/socket.js"
 
 export let main
-export let store
+
 
 function startApp() {
     const primaryDisplay = screen.getPrimaryDisplay()
@@ -42,8 +43,10 @@ function startApp() {
 }
 
 app.whenReady().then(() => {
-    store = new Store()
     ipcMainApp()
     ipcMainAccount()
+    ipcMainToDo()
+    socket.connect()
+    ipcMainChat()
     startApp()
 })

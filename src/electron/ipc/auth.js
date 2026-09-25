@@ -1,6 +1,8 @@
 import { ipcMain } from "electron";
 import { fetchFunc, responseHandler } from "../utils/fetch-boiler.js";
-import { main, store } from "../main.js";
+import { main } from "../main.js";
+import { socket } from "../utils/socket.js";
+import { store } from "../utils/store.js";
 
 
 export default function ipcMainAccount() {
@@ -13,19 +15,20 @@ export default function ipcMainAccount() {
         const data = await response.json()
 
         console.log(data)
-
-        process.nextTick(() => {
+        try {
+               
+            return [data.statusCode]
+        }
+        finally {
 
             store.set({token: data.data.token,userId: data.data.user[0], username: data.data.user[1], role: data.data.user[2]})
-            
+            socket.connect()
             main.webContents.send("schmucky:create-message", "Welcome, "+ data.data.user[1] + "!")
-        })
-
-        return [data.statusCode]
+        }
     })
 
     ipcMain.handle("app:login", async (e, username, password) => {
-            
+
         const response = await fetchFunc('auth/login', "POST", null, {username, password})
 
         await responseHandler(response)
@@ -34,14 +37,17 @@ export default function ipcMainAccount() {
 
         console.log(data)
 
-        process.nextTick(() => {
+        try {
 
+            return [data.statusCode]
+
+        } finally {
             store.set({token: data.data.token,userId: data.data.user[0], username: data.data.user[1], role: data.data.user[2]})
             
-            main.webContents.send("schmucky:create-message", "Welcome back, "+ data.data.user[1] + "!")
-        })
+            socket.connect()
 
-        return [data.statusCode]
+            main.webContents.send("schmucky:create-message", "Welcome back, "+ data.data.user[1] + "!")
+        }
     })
 
     ipcMain.on("app:logout", async() => {
@@ -55,11 +61,9 @@ export default function ipcMainAccount() {
 
         const response = await fetchFunc(`auth/logout`, "DELETE", token)
 
-        if (!response.ok) {
-            const errorBody = await response.json()
-            console.log(JSON.stringify({ status: errorBody.statusCode, errors: errorBody.errors }))
-        }
+        await responseHandler(response)
 
+        socket.disconnect()
         
     })
     
