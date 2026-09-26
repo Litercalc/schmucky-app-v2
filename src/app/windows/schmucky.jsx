@@ -27,7 +27,7 @@ export default function Schmucky() {
         <div className="flex relative select-none" draggable="false">
             <ContextMenu ref={contextMenu}/>
             <img src={animationStates[currentState]} alt="" className="ml-auto mt-43"/>
-            <div className="w-22 h-32 absolute ml-39 mt-50 cursor-grab" ref={duckArea}></div>
+            <div className="w-22 h-32 absolute ml-39 mt-50 cursor-grab " ref={duckArea}></div>
             <MessageBubble/>
         </div>
     )

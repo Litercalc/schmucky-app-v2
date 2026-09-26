@@ -3,7 +3,7 @@ import { store } from "./utils/store.js"
 import path from "path"
 import isDev from "./utils/isDev.js"
 
-import { ipcMainApp, ipcMainAccount, ipcMainToDo, ipcMainChat } from "./ipc/index.js"
+import { ipcMainApp, ipcMainAccount, ipcMainToDo, ipcMainChat, ipcMainNote } from "./ipc/index.js"
 import { socket } from "./utils/socket.js"
 
 export let main
@@ -46,6 +46,7 @@ app.whenReady().then(() => {
     ipcMainApp()
     ipcMainAccount()
     ipcMainToDo()
+    ipcMainNote()
     socket.connect()
     ipcMainChat()
     startApp()

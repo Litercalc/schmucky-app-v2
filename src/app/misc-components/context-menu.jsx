@@ -22,7 +22,7 @@ export default forwardRef (function ContextMenu(props, ref) {
             </div>
             <div className={`border-2 border-t-1 border-b-1 border-[#944242] ${!hasToken && "pointer-events-none opacity-75"}`}>
                 <ContextOption label="To-Do List"/>
-                <ContextOption label="Ducky AI"/>
+                <ContextOption label="Note"/>
                 <ContextOption label="Boop-a-Schmuck"/>
                 <ContextOption label="Set Alarm"/>
             </div>

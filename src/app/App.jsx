@@ -2,7 +2,7 @@ import RegisterWindow from "./windows/register.jsx"
 import LoginWindow from "./windows/login.jsx"
 import ToDoListWindow from "./windows/todolist.jsx"
 import SchmuckyWindow from "./windows/schmucky.jsx"
-import SchmuckyAIWindow from "./windows/ai.jsx"
+import NoteWindow from "./windows/note.jsx"
 import ChatWindow from "./windows/chat.jsx"
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
     register: RegisterWindow,
     login: LoginWindow,
     todolist: ToDoListWindow,
-    ai: SchmuckyAIWindow,
+    note: NoteWindow,
     chat: ChatWindow
   }
   const params = new URLSearchParams(window.location.search)

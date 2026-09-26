@@ -17,7 +17,7 @@ export default function ipcMainApp() {
             "Register": "register",
             "Login": "login",
             "To-Do List": "todolist",
-            "Ducky AI": "ai",
+            "Note": "note",
             "Boop-a-Schmuck": "chat",
             "Set Alarm": "ai",
             "Logout": "ai"

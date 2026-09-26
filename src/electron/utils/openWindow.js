@@ -21,9 +21,9 @@ export default function openWindow(windowName) {
         height: winHeight,
         x: workAreaX + screenWidth - winWidth - 87,
         y: workAreaY + screenHeight - winHeight - 90,
-        transparent: true,
-        frame: false,
-        resizable: false,
+        transparent: false,
+        frame: true,
+        resizable: true,
         skipTaskbar: true,
         alwaysOnTop: true,
         webPreferences: {

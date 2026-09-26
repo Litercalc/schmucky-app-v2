@@ -21,5 +21,8 @@ electron.contextBridge.exposeInMainWorld("electron", {
     changeTaskStatus: (id, newStatus) => electron.ipcRenderer.invoke("todolist:changeTaskStatus", id, newStatus),
     deleteTask: (id) => electron.ipcRenderer.invoke("todolist:delete", id),
 
-    sendMessage: (recipient, message) => electron.ipcRenderer.send("chat:send-message", recipient, message)
+    sendMessage: (recipient, message) => electron.ipcRenderer.send("chat:send-message", recipient, message),
+
+    getNote: () => electron.ipcRenderer.invoke("note:get"),
+    saveNote: (noteJSON) => electron.ipcRenderer.invoke("note:save", noteJSON)
 })
