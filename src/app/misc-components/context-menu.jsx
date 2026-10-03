@@ -24,7 +24,7 @@ export default forwardRef (function ContextMenu(props, ref) {
                 <ContextOption label="To-Do List"/>
                 <ContextOption label="Note"/>
                 <ContextOption label="Boop-a-Schmuck"/>
-                <ContextOption label="Set Alarm"/>
+                <ContextOption label="Time"/>
             </div>
             <div className={`border-2 border-t-1 border-[#944242] ${!hasToken && "pointer-events-none opacity-75"}`}>
                 <ContextOption label="Logout"/>

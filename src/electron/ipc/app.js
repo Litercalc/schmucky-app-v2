@@ -19,8 +19,7 @@ export default function ipcMainApp() {
             "To-Do List": "todolist",
             "Note": "note",
             "Boop-a-Schmuck": "chat",
-            "Set Alarm": "ai",
-            "Logout": "ai"
+            "Time": "time",
         }
         openWindow(windowNames[windowName])
     })

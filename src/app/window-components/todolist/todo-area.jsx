@@ -6,7 +6,6 @@ import Task from "./tasks.jsx"
 export default function ToDoArea({tasks, pending}) {
 
     const getCurrentTab = useTabStore(state => Object.entries(state.todoTabs).find( ([key, value]) => value === true)[0] )
-    console.log(tasks)
     const sortedTasks = tasks && [...tasks].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 
     let allTasks = []

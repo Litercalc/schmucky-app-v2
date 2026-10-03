@@ -2,7 +2,7 @@ import { BrowserWindow, app, ipcMain, screen } from "electron";
 import path from "path"
 import isDev from "./isDev.js";
 
-const windows = {}
+export const windows = {}
 
 export default function openWindow(windowName) {
     if (windowName in windows) {

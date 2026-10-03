@@ -8,6 +8,11 @@ export const useTabStore = create((set, get) => ({
         COMPLETED: false
     },
 
+    timeTabs: {
+        ALARM: true,
+        STOPWATCH: false
+    },
+
     setTabs: (label, tabGroup) => {
         set(state => ({[tabGroup]: Object.fromEntries(Object.entries(state[tabGroup]).map(([key]) => [key, label === key])) }))
     },

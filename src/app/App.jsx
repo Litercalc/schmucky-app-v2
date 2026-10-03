@@ -4,6 +4,7 @@ import ToDoListWindow from "./windows/todolist.jsx"
 import SchmuckyWindow from "./windows/schmucky.jsx"
 import NoteWindow from "./windows/note.jsx"
 import ChatWindow from "./windows/chat.jsx"
+import TimeWindow from "./windows/timer.jsx"
 
 export default function App() {
   const allWindows = {
@@ -11,7 +12,8 @@ export default function App() {
     login: LoginWindow,
     todolist: ToDoListWindow,
     note: NoteWindow,
-    chat: ChatWindow
+    chat: ChatWindow,
+    time: TimeWindow
   }
   const params = new URLSearchParams(window.location.search)
   const windowParam = params.get('window')

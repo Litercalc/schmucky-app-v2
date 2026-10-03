@@ -24,5 +24,13 @@ electron.contextBridge.exposeInMainWorld("electron", {
     sendMessage: (recipient, message) => electron.ipcRenderer.send("chat:send-message", recipient, message),
 
     getNote: () => electron.ipcRenderer.invoke("note:get"),
-    saveNote: (noteJSON) => electron.ipcRenderer.invoke("note:save", noteJSON)
+    saveNote: (noteJSON) => electron.ipcRenderer.invoke("note:save", noteJSON),
+
+    saveAlarm: (hour, minute, meridiem, alarmStarted) => electron.ipcRenderer.send("alarm:save", hour, minute, meridiem, alarmStarted),
+    stopAlarm: (callback) => {
+        const listener = (e) => callback()
+        electron.ipcRenderer.on("alarm:stop", listener)
+        return () => electron.ipcRenderer.removeListener("alarm:stop", listener)
+    },
+    getAlarm: () => electron.ipcRenderer.invoke("alarm:get")
 })

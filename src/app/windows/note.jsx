@@ -51,13 +51,13 @@ export default function Note(){
 
             <div className={`border-2 ${noteQuery.isPending && 'flex items-center justify-center'} [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent overflow-y-scroll -mt-2 border-black w-55 h-47  bg-white font-jersey leading-none [-webkit-app-region:no-drag] [&_.ProseMirror]:outline-none [&_.ProseMirror_p]:px-1`}>
                 {noteQuery.isPending ? <img src={Loading} alt="" /> :<EditorContent name="editor" editor={editor}/>}
-
+ 
             </div>
 
             <hr className="border-white bg-white border w-40 mt-1"/>
 
             <div className="flex gap-2 mt-1 items-center justify-center">
-                <SubmitButton label="Save" />
+                {noteMutation.isPending ? <img src={Loading} alt="" /> : <SubmitButton label="Save" />}
             </div>
     
         </form>
