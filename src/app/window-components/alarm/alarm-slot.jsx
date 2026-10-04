@@ -1,4 +1,4 @@
-import { useAlarmSlots } from "../../windows/timer.jsx"
+import { useAlarmSlots } from "../../window-components/alarm/alarm-area.jsx"
 
 export default function AlarmSlot({displayVar, upFunc, downFunc}) {
     const alarmStarted = useAlarmSlots(state => state.alarmStarted)

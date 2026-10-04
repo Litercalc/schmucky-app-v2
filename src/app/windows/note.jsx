@@ -44,6 +44,8 @@ export default function Note(){
 
     }
 
+    if (noteMutation.isPending) window.electron.setAnimationToMain('WRITE')
+
     return (
         <form onSubmit={noteMain} className=" origin-bottom-right animate-expand [-webkit-app-region:drag] w-60 h-80 flex flex-col items-center bg-linear-to-br from-[#294d4d]/90 via-[#2e6161] to-[#294d4d]/90 overflow-hidden border-4 border-gray-900 rounded-xl">
             

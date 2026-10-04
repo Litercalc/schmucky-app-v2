@@ -1,8 +1,55 @@
 import AlarmSlot from "./alarm-slot.jsx"
 import SubmitButton from "../../reusable-components/submit-button.jsx"
 
-import { useAlarmSlots } from "../../windows/timer.jsx"
 import useStopAlarm from "../../custom-hooks/useStopAlarm.js"
+
+import { create } from "zustand"
+
+export const useAlarmSlots = create((set, get) => ({
+    hourCount: "12",
+    minuteCount: "00",
+    meridiem: "PM",
+    alarmStarted: false,
+
+    toggleAlarm: () => {
+        set((state) => ({
+            ["alarmStarted"] : !state["alarmStarted"]
+        }))
+    },
+
+    incrementVar: (alarmVar) => {
+        console.log("hi")
+        const max = alarmVar === "hourCount" ? 12 : 59
+
+        set((state) => {
+            const current = Number(state[alarmVar])
+            const next = current >= max ? (max === 12 ? 1 : 0) : current + 1
+            return { [alarmVar]: String(next).padStart(2, '0') }
+        })
+    },
+
+    setVar: (alarmVar, value) => {
+        set({[alarmVar]: value} )
+    },
+
+    decrementVar: (alarmVar) => {
+        const max = alarmVar === "hourCount" ? 12 : 59
+
+        set((state) => {
+            const current = Number(state[alarmVar])
+            const next = current <= (max === 12 ? 1 : 0)  ? max : current - 1
+            return { [alarmVar]: String(next).padStart(2, '0') }
+        })
+        
+    },
+
+    changeMeridiem: () =>{
+        set((state) => ({
+            ["meridiem"]: state["meridiem"] === "PM" ? "AM" : "PM"
+        }))
+    },
+
+}))
 
 export default function AlarmArea() {
 

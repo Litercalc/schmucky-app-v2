@@ -8,10 +8,12 @@ import catchError from "../utils/err-handling.js"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 import Loading from "../../assets/loading.gif"
+import { useStateStore } from "../utils/schmucky-state-machine.js"
 
 export default function ToDoList(){
     const queryClient = useQueryClient()
     const todoTabs = useTabStore(state => state.todoTabs)
+    const setCurrentState = useStateStore(state => state.setCurrentState)
 
     const todolistMutation = useMutation({
         mutationFn:({task}) => window.electron.addTask(task),
@@ -43,6 +45,10 @@ export default function ToDoList(){
         e.currentTarget.reset()
 
 
+    }
+
+    if (todolistMutation.isPending) {
+        window.electron.setAnimationToMain('WRITE')
     }
 
     return (

@@ -41,8 +41,6 @@ export default function Task({taskName, status, id}) {
             window.electron.sendMessageToMain(`Deleted task!`)
         },
 
-        onSettled: () => {queryClient.invalidateQueries({queryKey: ['todos']})},
-
         onError: (error) => window.electron.sendMessageToMain(catchError(error))
     })
 

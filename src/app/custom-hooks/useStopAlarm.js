@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useAlarmSlots } from "../windows/timer"
+import { useAlarmSlots } from "../window-components/alarm/alarm-area.jsx"
 
 
 

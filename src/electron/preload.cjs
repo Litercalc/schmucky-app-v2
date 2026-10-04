@@ -12,6 +12,14 @@ electron.contextBridge.exposeInMainWorld("electron", {
     },
     sendMessageToMain: (message) => electron.ipcRenderer.send("schmucky:send-message", message),
 
+    setAnimation: (callback) => {
+        const listener = (e, data) => callback(data)
+        electron.ipcRenderer.on("schmucky:set-animation", listener)
+        return () => electron.ipcRenderer.removeListener("schmucky:set-animation", listener)
+    },
+
+    setAnimationToMain: (newState) => electron.ipcRenderer.send("schmucky:set-animation-to-main", newState),
+
     register: (username, password) => electron.ipcRenderer.invoke("app:register", username, password),
     login: (username, password) => electron.ipcRenderer.invoke("app:login", username, password),
     logout: () => electron.ipcRenderer.send("app:logout"),
@@ -32,5 +40,6 @@ electron.contextBridge.exposeInMainWorld("electron", {
         electron.ipcRenderer.on("alarm:stop", listener)
         return () => electron.ipcRenderer.removeListener("alarm:stop", listener)
     },
-    getAlarm: () => electron.ipcRenderer.invoke("alarm:get")
+    getAlarm: () => electron.ipcRenderer.invoke("alarm:get"),
+
 })

@@ -41,5 +41,10 @@ export default function ipcMainApp() {
         main.webContents.send("schmucky:create-message", message)
     })
 
+    ipcMain.on("schmucky:set-animation-to-main", (e, newState) => {
+        console.log(newState)
+        main.webContents.send("schmucky:set-animation", newState)
+    })
+
 
 }

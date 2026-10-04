@@ -3,6 +3,7 @@ import duckIdle from "../../assets/schmucky-states/duck-IDLE.gif"
 import duckPet from "../../assets/schmucky-states/duck-PET.gif"
 import duckSearching from "../../assets/schmucky-states/duck-SEARCHING.gif"
 import duckTalk from "../../assets/schmucky-states/duck-TALK.gif"
+import duckWrite from "../../assets/schmucky-states/duck-WRITE.gif"
 
 import { create } from "zustand"
 
@@ -14,20 +15,28 @@ export const useStateStore = create((set, get) => ({
             'IDLE' : [
                 'PET',
                 'SEARCHING',
-                'TALK'
+                'TALK',
+                'WRITE'
             ],
             'PET' : [
                 'IDLE',
                 'SEARCHING',
-                'TALK'
+                'TALK',
+                'WRITE'
             ],
             'SEARCHING': [
                 'IDLE',
                 'PET',
-                'TALK'
+                'TALK',
+                'WRITE'
             ],
             'TALK' : [
-                'IDLE'
+                'IDLE',
+                'WRITE'
+            ],
+            'WRITE': [
+                'IDLE',
+                'TALK',
             ]
         }
 
@@ -43,5 +52,6 @@ export const animationStates = {
     'IDLE': duckIdle,
     'PET': duckPet,
     'SEARCHING': duckSearching,
-    'TALK': duckTalk
+    'TALK': duckTalk,
+    'WRITE': duckWrite
 }

@@ -11,7 +11,6 @@ export default function ipcMainToDo() {
 
         const data = await response.json()
 
-        console.log(data)
 
         return [data.statusCode]
     })
@@ -24,7 +23,6 @@ export default function ipcMainToDo() {
 
         const data = await response.json()
 
-        console.log(data)
 
         return [data]
     })
@@ -35,7 +33,6 @@ export default function ipcMainToDo() {
 
         const data = await response.json()
 
-        console.log(data.data.status)
 
         return data.data.status
     })
@@ -46,7 +43,6 @@ export default function ipcMainToDo() {
 
         const data = await response.json()
 
-        console.log(data.data.status)
 
         return data.data.status
     })

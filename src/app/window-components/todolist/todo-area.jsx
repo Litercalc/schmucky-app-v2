@@ -13,6 +13,8 @@ export default function ToDoArea({tasks, pending}) {
         if (e.status === getCurrentTab)
             allTasks = [...allTasks, <Task taskName={e.task} key={e.id} status={e.status} id={e.id} />]
     })
+
+    
     return (
         <div className={`border-2 overflow-y-auto max-h-40 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-[#e0d26f] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent border-white w-55 h-41 ${allTasks.length === 0 && "flex items-center justify-center"}`}>
             {pending ? <img src={Loading} alt="" /> : 

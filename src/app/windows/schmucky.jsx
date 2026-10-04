@@ -5,6 +5,7 @@ import ContextMenu from "../misc-components/context-menu.jsx"
 import useInteractables from "../custom-hooks/useInteractables.js"
 import useContextMenu from "../custom-hooks/useContextMenu.js"
 import usePetSchmucky from "../custom-hooks/usePetSchmucky.js"
+import useSetAnimation from "../custom-hooks/useSetAnimation.js"
 
 import MessageBubble from "../misc-components/message-bubble.jsx"
 
@@ -22,6 +23,7 @@ export default function Schmucky() {
     useInteractables([duckArea, contextMenu])
     useContextMenu([duckArea, contextMenu])
     usePetSchmucky(duckArea)
+    useSetAnimation()
 
     return (
         <div className="flex relative select-none" draggable="false">

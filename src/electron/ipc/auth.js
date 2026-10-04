@@ -35,7 +35,6 @@ export default function ipcMainAccount() {
 
         const data = await response.json()
 
-        console.log(data)
 
         try {
 
