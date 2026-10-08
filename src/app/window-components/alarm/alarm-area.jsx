@@ -3,7 +3,10 @@ import SubmitButton from "../../reusable-components/submit-button.jsx"
 
 import useStopAlarm from "../../custom-hooks/useStopAlarm.js"
 
+import AlarmSound from "../../../assets/audio/Kawaii_Ringtone.mp3"
+
 import { create } from "zustand"
+import { useRef } from "react"
 
 export const useAlarmSlots = create((set, get) => ({
     hourCount: "12",
@@ -52,7 +55,6 @@ export const useAlarmSlots = create((set, get) => ({
 }))
 
 export default function AlarmArea() {
-
     const hourCount = useAlarmSlots(state => state.hourCount)
     const minuteCount = useAlarmSlots(state => state.minuteCount)
     const meridiemString = useAlarmSlots(state => state.meridiem)
@@ -62,12 +64,20 @@ export default function AlarmArea() {
     const toggleAlarm = useAlarmSlots(state => state.toggleAlarm)
     const alarmStarted = useAlarmSlots(state => state.alarmStarted)
 
-    useStopAlarm()
+    const alarmSoundRef = useRef(new Audio(AlarmSound))
+
+    useStopAlarm(alarmSoundRef)
 
     const mainToggleAlarm = (e) => {
         e.preventDefault()
         toggleAlarm()
         window.electron.saveAlarm(hourCount, minuteCount, meridiemString, alarmStarted)
+
+        if (alarmStarted) {
+            window.electron.setAnimationToMain('IDLE')
+            alarmSoundRef.current.pause()
+            alarmSoundRef.current.currentTime = 0;
+        }
     }
 
     return (

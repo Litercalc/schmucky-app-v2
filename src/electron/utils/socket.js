@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { store } from "./store.js";
 import { main } from "../main.js";
 
-export const socket = io('http://localhost:8080', {
+export const socket = io('https://schmuckyapi.markbackend.com', {
     autoConnect: false,
     auth: (cb) => {
         cb({token: store.has('token') ? store.get('token') : null})

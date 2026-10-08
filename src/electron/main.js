@@ -26,7 +26,7 @@ function startApp() {
         frame: false,
         resizable: false,
         alwaysOnTop: true,
-        skipTaskbar: true,
+        skipTaskbar: false,
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: false,
